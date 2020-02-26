@@ -32,7 +32,7 @@ app.use("/api/reports", reports);
 app.use("/api/report", report);
 app.use("/api/auth", auth);
 app.use("/api/login", login);
-//Check if environment variable is set for port, if it isn't use 5080
+//Check config file for api port.
 app.listen(config.get("general.api-port"), () =>
   console.log(`Listening on port ${config.get("general.api-port")}...`)
 );
