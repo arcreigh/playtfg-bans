@@ -1,3 +1,4 @@
+const config = require("config");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const express = require("express");
@@ -17,12 +18,12 @@ app.use(morgan("tiny"));
 
 //connect to databases.
 mongoose
-  .connect("mongodb://support-mgmt.arc.net/playground", {
+  .connect(`mongodb://${config.get("database.server")}/${config.get("database.db")}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => console.log("Connected to MongoDB!"))
-  .catch(err => console.error("Could not connect to MongoDB..." + err));
+  .then(() => console.log(`Connected to mongoDB on ${config.get("database.server")}!`))
+  .catch(err => console.error(`Could not connect to ${config.get("database.server")}...` + err));
 //initialize routes
 app.use("/api/ban", ban);
 app.use("/api/bans", bans);
@@ -32,6 +33,6 @@ app.use("/api/report", report);
 app.use("/api/auth", auth);
 app.use("/api/login", login);
 //Check if environment variable is set for port, if it isn't use 5080
-
-const port = process.env.PORT || 5080;
-app.listen(port, () => console.log(`listening on port ${port}...`));
+app.listen(config.get("general.api-port"), () =>
+  console.log(`Listening on port ${config.get("general.api-port")}...`)
+);

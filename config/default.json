@@ -1,0 +1,9 @@
+{
+  "database": {
+    "server": "localhost",
+    "db": "playground"
+  },
+  "general": {
+    "api-port": "5080"
+  }
+}
