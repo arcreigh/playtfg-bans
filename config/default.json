@@ -1,0 +1,15 @@
+{
+  "database": {
+    "server": "localhost",
+    "db": "playground"
+  },
+  "general": {
+    "api-port": "5080"
+  },
+  "passport": {
+    "steam": {
+      "returnURL": "http://localhost:5080/api/auth/steam/return",
+      "realm": "http://localhost:5080/"
+    }
+  }
+}

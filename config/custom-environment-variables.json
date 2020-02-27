@@ -1,0 +1,7 @@
+{
+  "passport": {
+    "steam": {
+      "api-key": "steam_api_key"
+    }
+  }
+}
