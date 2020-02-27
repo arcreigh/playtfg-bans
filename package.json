@@ -1,21 +1,22 @@
 {
   "name": "playtfg-bans",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PlayTFG ban system backend",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "DeadlyDragon",
-  "license": "MIT",
+  "license": "GNU General Public License v3.0",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "body-parser": "^1.19.0",
-    "config": "^3.2.6",
+    "config": "^3.3.0",
     "express": "^4.17.1",
-    "helmet": "^3.21.2",
-    "mongoose": "^5.9.1",
+    "helmet": "^3.21.3",
+    "mongoose": "^5.9.2",
     "morgan": "^1.9.1",
+    "passport": "^0.4.1",
     "passport-steam": "^1.0.12"
   }
 }
