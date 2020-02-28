@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const Report = mongoose.model(
   "Report",
   new mongoose.Schema({
-    reportingUser: { type: String, required: true, minlength: 3, maxlength: 64 },
+    reportingUserSteamID: { type: String, required: true, minlength: 3, maxlength: 64 },
+    reportingUserPersonaName: { type: String, required: true },
     reportedUser: { type: String, required: true, minlength: 3, maxlength: 64 },
     game: { type: String, required: true, minlength: 3, maxlength: 32 },
     server: { type: String, required: true, minlength: 3, maxlength: 64 },
@@ -22,10 +23,6 @@ const Report = mongoose.model(
 function validateReport(report) {
   console.debug("DEBUG - validateReport", report);
   const schema = Joi.object({
-    reportingUser: Joi.string()
-      .min(3)
-      .max(64)
-      .required(),
     reportedUser: Joi.string()
       .min(3)
       .max(64)
