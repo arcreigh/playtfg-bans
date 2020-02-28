@@ -5,6 +5,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const steamStrategy = require("passport-steam").Strategy;
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const app = express();
 //define routes
 const bans = require("./routes/bans");
@@ -19,8 +21,17 @@ const ban = require("./routes/ban");
 //call middleware
 app.use(helmet());
 app.use(morgan("tiny"));
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 3600000,
+    secret: "unach14#dcde23!",
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 app.use(passport.initialize());
-
+app.use(passport.session());
 //connect to databases.
 mongoose
   .connect(`mongodb://${config.get("database.server")}/${config.get("database.db")}`, {
