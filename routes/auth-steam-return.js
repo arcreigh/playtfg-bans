@@ -27,11 +27,15 @@ router.get(
         personaName: req.user.displayName,
         steamAge: UTC(req.user._json.timecreated)
       });
-
+      //Not sure if I need to validate the request here since the request is coming from steam itself
+      //Maybe mongoose validation is enough?
+      //I will leave the validation commented out until proven otherwise.
+      //validate(user);
+      console.log(user.steamAge);
       // .update may go away look into updateOne
       user = await User.update(
         { steamID: user.steamID },
-        { $set: { personaName: user.personaName } },
+        { $set: { personaName: user.personaName, steamAge: user.steamAge } },
         { upsert: true, setDefaultsOnInsert: true, runValidators: true }
       );
       console.log(user);
