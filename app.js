@@ -13,14 +13,13 @@ const bans = require("./routes/bans");
 const api = require("./routes/api");
 const reports = require("./routes/reports");
 const report = require("./routes/report");
-const auth = require("./routes/auth");
 const authSteam = require("./routes/auth-steam");
 const authSteamReturn = require("./routes/auth-steam-return");
-const login = require("./routes/login");
 const ban = require("./routes/ban");
+const users = require("./routes/users");
 //call middleware
 app.use(helmet());
-app.use(morgan("tiny"));
+app.use(morgan("common"));
 app.use(
   session({
     resave: true,
@@ -63,15 +62,14 @@ passport.use(
   )
 );
 //initialize routes
+app.use("/api", api);
 app.use("/api/ban", ban);
 app.use("/api/bans", bans);
-app.use("/api", api);
+app.use("/api/users", users);
 app.use("/api/reports", reports);
 app.use("/api/report", report);
-app.use("/api/auth", auth);
 app.use("/api/auth/steam", authSteam);
 app.use("/api/auth/steam/return", authSteamReturn);
-app.use("/api/login", login);
 //Check config file for api port.
 app.listen(config.get("general.api-port"), () =>
   console.log(`Listening on port ${config.get("general.api-port")}...`)

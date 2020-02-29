@@ -1,3 +1,8 @@
+0.0.4 - 2/29/2020</br>
+--General--</br>
+Implemented authentication on all remaining routes.</br>
+Implemented admin checks for users.</br>
+</br>
 0.0.3 - 2/28/2020</br>
 --General--</br>
 Implemented persistant session handling with connect-mongo</br>

@@ -7,7 +7,8 @@ const User = mongoose.model(
     steamID: { type: String, required: true, minlength: 3, maxlength: 64, unique: true },
     personaName: { type: String, required: true, minlength: 3, maxlength: 64 },
     steamAge: { type: String, required: true, minlength: 10, maxlength: 1024 },
-    joinDate: { type: Date, default: Date.now }
+    joinDate: { type: Date, default: Date.now },
+    isAdmin: { type: Boolean, default: false }
   })
 );
 
